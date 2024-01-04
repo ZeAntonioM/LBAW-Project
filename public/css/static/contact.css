@@ -1,0 +1,80 @@
+main .container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+    padding: 0;
+}
+
+main .container .map {
+    width: 100%;
+    height: auto;
+}
+
+.container .contactInfo {
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    width: 100%;
+    background: var(--onprimary-bg-color);
+    padding: 2em;
+    display: flex;
+    box-shadow: 0 20px 25px rgba(0, 0, 0, 0.15);
+    color: var(--secondary-text-color);
+
+    margin: 0;
+
+
+}
+
+.container .contactInfo .info {
+    position: relative;
+    margin: 1em 0;
+    list-style: none;
+    padding: 1em;
+
+}
+
+.container .contactInfo .info .icon {
+    height: 2em;
+}
+
+.container .contactInfo .info li {
+
+    position: relative;
+    display: flex;
+    cursor: pointer;
+    margin: 1em 0 1em 1em;
+
+}
+
+.container .contactInfo .info li span {
+    width: fit-content;
+    margin-left: 1em;
+
+}
+
+.container .contactInfo h2 {
+
+    font-size: 1.5em;
+    font-weight: 500;
+}
+
+.container .contactInfo .sci {
+    position: relative;
+    display: flex;
+
+}
+
+.container .contactInfo .sci li {
+    list-style: none;
+    margin-right: 15px;
+
+}
+
+.container .contactInfo ul .sci li a {
+    text-decoration: none;
+
+}
+

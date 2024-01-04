@@ -1,0 +1,152 @@
+.status{
+    padding: 0.2em 0.5em ;
+    border-radius: 10em;
+    font-size: 1em;
+    color: white;
+}
+.status.open{
+    background: var(--onprimary-bg-color);
+}
+
+.status.closed, .status.archive{
+    background: var(--on-third-bg-color);
+}
+.status.cancelled{
+    background: var(--error-text-color);
+}
+
+.projectCard,
+.taskCard{
+
+    padding: 1em ;
+    width: 100%;
+    border-bottom: 1px solid var(--primary-border);
+}
+
+.projectCard ul,
+
+.taskCard ul{
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    align-content: center;
+
+    margin:  0;
+
+    flex-wrap: wrap;
+    gap: 1em;
+
+
+}
+
+.projectCard ul header ,
+
+.taskCard ul header {
+
+    display: flex;
+    gap: 1em;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 50em;
+}
+
+.projectCard ul header h3,
+
+.taskCard ul header h3{
+    font-size: 1.3em;
+    font-weight: normal;
+}
+
+
+.projectCard ul .deadLine,
+.taskCard ul .deadLine{
+    width: 15em;
+}
+.userCard{
+    display: flex;
+    gap: 1em;
+    overflow: clip;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+
+}
+.userCard.small .info{
+
+   overflow-x: clip;
+    max-width: 10em;
+
+}
+.userCard .info{
+    flex: 1;
+}
+
+.userCard h3{
+    font-weight: 500;
+    font-size: 1.3em;
+}
+
+.userCard.small h3{
+    font-size: 1em;
+}
+.userCard.small h5{
+    font-size: 0.8em;
+}
+
+.userCard.small .avatar{
+    width: 2em;
+    height: 2em;
+
+}
+
+.userCard .avatar{
+    width: 3em;
+    height: 3em;
+
+}
+
+
+.notificationCard {
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    background: var(--primary-bg-color);
+    color: var(--primary-text-color);
+    border-radius: 0.3em;
+}
+.notificationCard >a > header.seen i{
+    color: var(--sucess-text-color);
+
+
+}
+.notificationCard a{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+.notificationCard a footer {
+    width: fit-content;
+    margin-left: auto;
+}
+.tagCard{
+    display: flex;
+    gap:1em;
+    justify-content: space-between;
+    padding: 0.5em 2em ;
+    flex-wrap: wrap;
+    align-items: center;
+
+}
+.tagCard .tagContainer{
+    width: 100%;
+    max-width: 25em;
+}
+
+.tagCard .actions{
+    display: flex;
+    gap: 3em;
+}
+
+.tagCard .actions >*:hover{
+    background: var(--on-third-bg-color);
+}

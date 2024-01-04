@@ -1,0 +1,163 @@
+:root{
+    --royal-blue:#6495ED;
+    --esmeral-green:#00BBAA;
+    --sunset-orange:#FF7500;
+    --brown: #D2B48C;
+    --yellow: #FFBB00;
+    --silver: #A0A0A0;
+    --pink: #FFA6C1;
+    --blue: #4682B4;
+    --red:#FF503A;
+    --purple:#9696DA;
+
+
+}
+.tag{
+    color: white;
+    padding: 0.3em 0.7em;
+    border-radius: 2em;
+}
+.tag0{
+    background: var(--royal-blue);
+}
+.tag1{
+    background: var(--esmeral-green);
+}
+.tag2{
+    background: var(--sunset-orange);
+}
+.tag3{
+    background: var(--brown);
+}
+.tag4{
+    background: var(--red);
+}
+.tag5{
+    background: var(--yellow);
+}
+.tag6{
+    background: var(--purple);
+}
+.tag7{
+    background: var(--pink);
+}
+.tag8{
+    background: var(--blue);
+}
+.tag9{
+    background: var(--silver);
+}
+
+.tagPage{
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1em;
+}
+
+.tags-list {
+    width: 100%;
+    margin-bottom: 5em;
+}
+
+
+.tags-list > .tags {
+    padding: 1em 0;
+}
+
+.tags-list > header {
+    width: 100%;
+    display: flex;
+    gap: 1em;
+    flex-wrap: wrap;
+    color: white;
+    background: var(--onsecondary-bg-color);
+    padding: 2em 1em 1em;
+}
+
+.tags-list > header a {
+    margin-left: auto;
+    background: var(--sucess-text-color);
+}
+
+.tags-list > header > * {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.tags-list header > span {
+    margin-left: 0.6em;
+}
+
+.tags-list header input {
+    background: var(--primary-bg-color);
+}
+
+.tags-list header button {
+    background: var(--sucess-text-color);
+}
+
+.tags-list header > span i {
+    margin-right: 0.6em;
+}
+.addTagContainer{
+    margin-left: auto;
+}
+.addTagContainer > form {
+    gap: 1em;
+    display: flex;
+    margin: 0;
+
+}
+
+.addTagContainer .error {
+    align-self: flex-end;
+}
+
+.tagSection{
+    display: flex;
+    flex-direction:column ;
+    gap: 2em;
+    border-bottom: 1px solid var(--primary-border);
+}
+
+.tagSection >form{
+    display: flex;
+    gap: 1em;
+    padding: 0 1em ;
+    flex-wrap: wrap;
+    margin: 0;
+}
+.tagSection >form >*{
+    margin: 0;
+}
+.tagSection >form .error{
+  width: 100%;
+    padding: 1em 1em 1em 0;
+}
+.tagSection >form.hidden{
+   display: none;
+
+}
+
+.tagSection >form input{
+    max-width: 40em;
+}
+.tagSection >form input[type='submit']{
+    background: var(--onprimary-bg-color);
+    border: none;
+}
+
+
+
+
+
+
+
+
+
+
+

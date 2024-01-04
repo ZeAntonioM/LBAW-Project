@@ -1,0 +1,344 @@
+
+.taskCreation{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+.taskCreation .formContainer form input,.formContainer form textarea{
+    background: var(--input-bg-color);
+}
+.taskCreation .shine {
+    color: var(--onprimary-bg-color);
+}
+
+.taskPage{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    width: 100%;
+    max-width: 70em;
+    margin: auto;
+    padding: 2em;
+    gap: 4em;
+}
+.taskPage .container{
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+    flex-wrap: wrap;
+    padding: 0;
+    gap: 4em;
+}
+.taskPage header{
+    display: flex;
+    gap: 1em;
+    justify-content: space-between;
+    align-content: space-between;
+    flex-wrap: wrap-reverse;
+    text-align: center;
+}
+
+.status.open{
+    background: var(--onprimary-bg-color);
+}
+.status.closed{
+    background: var(--on-third-bg-color);
+}
+
+.taskPage header .status.canceled{
+    background: var(--error-text-color);
+}
+.taskCreation .formContainer{
+    max-width: 60em;
+}
+.taskPage .primaryContainer{
+    display: flex;
+    gap: 3em;
+    flex-direction: column;
+    flex-grow: 1;
+    width: 40em;
+}
+.taskPage .sideContainer{
+    display: flex;
+    gap: 2em;
+    flex-direction: column;
+    width: 20em;
+}
+.taskPage .sideContainer > *{
+    background: var(--input-bg-color);
+    padding: 0.5em;
+    text-align: center;
+}
+
+.taskPage .primaryContainer header{
+    padding: 1em;
+    text-align: center;
+}
+
+.taskPage .sideContainer ul{
+    padding:  1em 0.5em;
+    text-align: start;
+}
+a{
+    text-decoration: none;
+    color: var(--primary-text-color)
+}
+.taskPage .sideContainer  h5{
+    font-size: 1.2em;
+    font-weight: bold;
+}
+.taskPage header{
+    display: flex;
+    justify-content: space-between;
+    align-content: space-between;
+    flex-wrap: wrap-reverse;
+
+}
+.taskPage header .info{
+    display: flex;
+    gap :1em;
+    height: fit-content;
+    margin:  auto 0;
+    flex-wrap: wrap;
+    max-width: 50em;
+}
+
+.taskPage header .info h1,h6{
+    width: 100%;
+    text-align: start;
+}
+.taskPage header .info h1{
+    width: fit-content;
+}
+.taskPage header .actions{
+    display: flex;
+    gap: 1em;
+}
+.taskPage header .actions > *
+{
+    height: fit-content;
+}
+.taskPage header .actions a, .multiselector span,.taskPage .buttonLink {
+    padding: 0.5em 0.7em;
+    background: var(--onprimary-bg-color);
+    color: white;
+    border-radius: 0.3em;
+}
+
+.taskPage .buttonLink:hover {
+    background: var(--onsecondary-bg-color);
+}
+.taskPage header a.cancel{
+    background: var(--error-text-color);
+}
+.multiselector{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 2em;
+}
+.multiselector span{
+    width: 100%;
+    text-align: center;
+    background: var(--onsecondary-bg-color);
+    margin: auto;
+    border-radius: 10em;
+    cursor: pointer;
+}
+
+.multiselector span i{
+    margin-left: 1em;
+}
+
+.multiselector .dropdown{
+    top: 120%;
+    max-width: 40rem;
+    max-height: 25rem;
+    z-index: 2;
+    overflow-y: scroll;
+    position: absolute;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    background: white;
+    width: 100%;
+    padding:  1em;
+    box-shadow: 0 0.5em 0.5em #00000004,0 1em 1em #00000003,0 1.5em 1.5em #00000002,0 2em 2em #00000001;
+}
+.multiselector .dropdown.hidden{
+    display: none;
+}
+.multiselector .dropdown .item{
+    display: flex;
+    gap: 1em;
+    justify-content: flex-start;
+    align-content: flex-start;
+    align-items: center;
+    padding: 1em;
+}
+.multiselector .dropdown .item * {
+    margin: 0;
+    padding: 0;
+
+}
+.multiselector .dropdown .item input[type="checkbox"]{
+    scale: 1.5;
+}
+
+.openCloseModal, .openReopenModal {
+    text-align: center;
+    margin: 0 0 0 auto;
+    max-width: 10em;
+}
+
+.buttons * {
+    margin: auto 0;
+}
+
+
+@media (max-width: 74em) {
+
+    .taskPage .primaryContainer{
+
+        width: 100%;
+        max-width: 40em;
+        margin: auto;
+    }
+    .taskPage .sideContainer{
+
+        width: 100%;
+        max-width: 30em;
+        margin: auto;
+    }
+
+}
+
+
+@media (max-width: 40em) {
+
+    .taskPage {
+        padding: 1em;
+    }
+}
+
+.containerBoot{
+    max-height: 60vh;
+    
+    overflow-y: scroll;
+    overflow-x: hidden;
+   
+}
+.hello{
+    border:red solid 2px;
+}
+.own-comment{
+    
+    min-height:fit-content;
+    border: rgba(0, 0, 0, 0.264) solid 2px;
+    border-radius: 10px;
+}
+.participants-comment{
+    min-height:fit-content;
+    border: rgba(0, 0, 0, 0.264) solid 2px;
+    border-radius: 10px;
+
+
+}
+.comment-header{
+    color:var(--primary-text-color);
+    
+}
+
+.comment-header img{
+    margin-top:0;
+    border-color: 2px solid red;
+    width: 2.5em;
+    height: 2.5em;
+}
+.comment-header span{
+    padding-left: 5px;
+    margin-top: 0;
+    font-size: 1.3em;
+}
+.edit-comment{
+    margin-left:5px;
+}
+button{
+    border: none;
+    background-color:  var(--onprimary-bg-color);
+    
+}
+
+@media only screen and (max-width: 575.98px) {
+    .editButtons{
+        display: flex;
+        margin-top: 10px;
+        justify-content: center;
+    }
+    .userName{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+    .post-body{
+        text-align: center;
+    }
+  }
+  
+  @media only screen and (min-width: 576px) and (max-width: 767.98px) {
+    .editButtons{
+        display: flex;
+        margin-top: 10px;
+        justify-content: center;
+    }
+    .userName{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+    .post-body{
+        text-align: center;
+    }
+  }
+ 
+  @media only screen and (min-width: 768px) and (max-width: 991.98px) {
+    .editButtons{
+        display: flex;
+        margin-top: 10px;
+        justify-content: center;
+    }
+    .userName{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+    .post-body{
+        text-align: center;
+    }
+  }
+  @media only screen and (min-width: 992px) and (max-width: 1199.98px) {
+    .editButtons{
+        display: flex;
+        justify-content: end;
+    }
+    .userName{
+        display: flex;
+    }
+  }
+  
+  @media only screen and (min-width: 1200px) {
+    .editButtons{
+        display: flex;
+        justify-content: end;
+    }
+    .userName{
+        display: flex;
+    }
+  }
+  

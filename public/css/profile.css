@@ -1,0 +1,178 @@
+main{
+    justify-content: flex-start;
+}
+.container-fluid{
+    padding: 0 !important;
+    overflow-x: hidden;
+}
+.first header>h1{
+    color : var(--primary-bg-color);
+}
+.dropdown-menu {
+    width: 200px; /* Adjust the width as needed */
+    height: 200px;
+}
+.first{
+    margin: 0 !important;
+    
+}
+
+.dropdown>ul>li{
+    margin-bottom: 2em;
+}
+.first{
+    background-image: url("/img/profile_background.jpg");
+    padding: 2%;
+ 
+}
+.infos{
+    font-size: 1.5em;
+    color: white;
+}
+figure {
+ 
+    width: 10em;
+    height: 10em;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    padding: 0;
+    overflow: hidden;
+    border-radius: 50%;
+  }
+
+figure>img {
+    border-radius: 50%;
+    width: 10em;
+    height: 10em;
+    object-fit: cover; 
+}
+.dropdown-item{
+    font-weight: 500;
+    text-transform: none;
+    font-size: 1.5em;
+    background-color: var(--primary-bg-color);
+    color: var(--primary-text-color);
+}
+
+.dropdown-header{
+    font-size: 1.5em; 
+    color:var(--primary-text-color);
+    font-weight:500;
+}
+.delete-btn{
+    text-align: center;
+    font-weight: 500;
+    background-color: var(--error-text-color);
+    color:var(--primary-bg-color);
+}
+
+.editbutton{
+    text-align: center;
+    font-weight: 500;
+    color:var(--primary-text-color);
+}
+.editbutton:focus,.delete-btn:focus{
+    background-color: transparent;
+}
+
+
+.second{
+    padding: 2%;
+}
+.second header>h1{
+    color: var(--primary-text-color);
+}
+
+.task{
+    border-bottom: 1px grey solid;
+}
+
+.taskinfo>span{
+    color: var(--primary-text-color);
+    font-size: 1.5em;
+}
+
+.text-truncate{
+    overflow: hidden; 
+    display: block; 
+    color: var(--primary-text-color);
+}
+.taskbtn{
+    font-size: 1em;
+    background-color: #243b55;
+    color: white;
+}
+
+
+.statInfo,.statNumber{
+    color: var(--primary-text-color);
+}
+.statInfo{
+    text-align: center;
+    font-size: 2em;
+}
+.statNumber{
+    text-align: center;
+    font-size: 3em;
+}
+label{
+
+    font-size: 1em;
+}
+.form-group{
+    width:30%;
+}
+
+input{
+    font-size: 1.2em;
+}
+input::placeholder{
+    color:black;
+}
+input:hover{
+    border-color: #243b55;
+}
+
+input:focus{
+    border-color: #243b55 !important;
+}
+.forgot > a{
+    color: #243b55 !important;
+}
+
+.goback{
+ 
+    color:white;
+    font-size: 1.5em;
+    background-color:transparent;
+}
+.buttonremove{
+    border: none;
+    background-color: var(--error-text-color);
+}
+.buttonremove:hover{
+    border: none;
+    background-color: #ff3333b8;
+}
+
+@media (max-width: 767.98px) {
+    .form-group{
+        width: 100%;
+    }
+    input::placeholder{
+        text-align: center;
+    }
+    .update{
+       display: flex;
+       justify-content: center;
+       align-items: center;
+    }
+ 
+  }
+
+  .empty>p{
+    padding: 20px;
+    color: var(--primary-text-color);
+    font-size: 1.5em;
+}

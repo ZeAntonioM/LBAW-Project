@@ -1,0 +1,151 @@
+body > header {
+    position: fixed;
+    top: 0;
+
+    display: flex;
+    z-index: 13;
+    width: 100%;
+}
+header.withNav + main{
+    margin-top: 5em;
+}
+header + main{
+    margin-top: 3.5em;
+}
+body > header section {
+
+    width: calc(100%- 1em);
+    padding: 0 0.5em ;
+    position: relative;
+    display: flex;
+    align-content: center;
+    align-items: center;
+
+}
+body > header .profile input + ul{
+    display: none;
+}
+body > header .profile input:checked + ul{
+    display: flex;
+}
+
+body > header #login{
+    color:var(--secondary-text-color);
+    margin-left: auto;
+}
+
+body > header #header_title{
+    width: 10em;
+}
+body > header .profile img{
+    cursor: pointer;
+}
+
+body > header input[type='checkbox']{
+    display: none;
+}
+body > header .profile{
+    position: relative;
+    width: fit-content;
+}
+
+body > header .profile ul{
+
+    width: 13em;
+    position: absolute;
+    flex-direction: column;
+    background: var(--primary-bg-color);
+    color: var(--primary-text-color);
+    top:1.5em;
+    right: 0;
+    z-index: -1;
+    list-style: none;
+    padding: 2em 2em 1em;
+    border-radius: 0.5em;
+    border: 1px solid var(--primary-border);
+}
+body > header .profile ul li a{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: 1em;
+    padding: 0.2em 1em ;
+    background: #00000007;
+}
+body > header .profile ul #logout{
+    color: var(--secondary-text-color);
+    background: var(--error-text-color);
+}
+body > header .profile ul span{
+ margin-bottom: 1em;
+    overflow: clip;
+}
+body > header label{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+body > header label i{
+    scale: 1.5;
+    border-radius:100% ;
+
+    padding: 0.3em;
+
+}
+body > header label i:hover{
+    background: var(--on-third-bg-color);
+}
+nav.empty{
+    display: none;
+}
+
+
+#home {
+    display: none;
+}
+#bars{
+    display: none;
+}
+@media (max-width: 40em) {
+   #header_title{
+       display: none;
+   }
+    #bars{
+        display: block;
+        z-index: 2;
+    }
+    body > header >input:checked + nav{
+        display: block;
+    }
+    body > header >input + nav{
+        display: none;
+    };
+
+    body > header > nav{
+        position: fixed;
+        z-index: 1;
+        height: 100vh;
+        background: var(--secondary-bg-color);
+        width: 100vw;
+        top : 0;
+        left: 0;
+    }
+    body > header #home{
+        display: block;
+    }
+
+    body > header > nav ul{
+        display: flex;
+        height: 100%;
+        gap: 2em;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    header.withNav + main, header + main{
+        margin-top: 3.5em;
+    }
+
+
+
+}

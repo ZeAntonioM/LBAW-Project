@@ -1,0 +1,91 @@
+.mymodal {
+    background-color: white;
+    width: 95%;
+    max-width: 40em;
+    margin: auto;
+    border-radius: 0.5em;
+}
+
+.fa-x {
+    font-size: 1.2em;
+    color: inherit;
+    cursor: pointer;
+}
+
+.fa-x:hover {
+    color: var(--close-button-hover-color);
+}
+
+.mymodal > div {
+    padding: 1.5em;
+}
+
+.mymodal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mymodal-header h3 {
+    font-weight: 500;
+}
+
+.mymodal-body {
+    border-width: 1px 0;
+    border-style: solid;
+    border-color: var(--modal-secondary-border)
+}
+
+.mymodal-buttons {
+    display: flex;
+    justify-content: end;
+    column-gap: 2em;
+    align-items: center;
+}
+
+.mymodal-buttons > a {
+    color: inherit;
+}
+
+.mymodal p, .mymodal button {
+    margin: 0;
+}
+
+.mymodal::backdrop {
+    background: rgb(0 0 0 / 0.6);
+}
+
+.mymodal-confirm {
+    border: 0;
+}
+
+dialog.mymodal-error .mymodal-header {
+    background-color: var(--modal-header-error);
+    color: white
+}
+
+dialog.mymodal-warning .mymodal-header {
+    background-color: var(--modal-header-warning);
+    color: white
+}
+
+dialog.mymodal-info .mymodal-header {
+    background-color: var(--modal-header-info);
+    color: white
+}
+
+dialog.mymodal-success .mymodal-header {
+    background-color: var(--modal-header-success);
+    color: white
+}
+
+.icon-title-wrapper i {
+    font-size: 1.5em;
+}
+
+.icon-title-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 1em;
+}

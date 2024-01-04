@@ -1,0 +1,98 @@
+.notifications{
+    margin-left: auto;
+    width: fit-content;
+}
+.notifications  .number{
+    background: var(--error-text-color);
+    position: absolute;
+    bottom:50%;
+    left:0;
+    padding: 0;
+    border-radius: 100%;
+    width: 1.1em;
+    text-align: center;
+    z-index: 2;
+}
+
+.notificationSection > header .number::before{
+    content: '(';
+}
+.notificationSection > header .number::after{
+    content: ')';
+}
+
+.notifications label,.notificationsContainer label{
+    cursor: pointer;
+    width: fit-content;
+}
+
+ input#notifications + .notificationsContainer{
+    display: none;
+}
+ input#notifications:checked + .notificationsContainer{
+    display: flex;
+}
+#notifications{
+    display: none;
+}
+ .notificationsContainer{
+    position: fixed;
+    height: 100vh;
+     overflow-y: scroll;
+     display: flex;
+     flex-direction: column;
+
+     top: 0;
+     right: 0;
+     width: 100%;
+     max-width: 30em;
+     z-index: 13;
+     background: var(--onsecondary-bg-color);
+     border-left: 1px solid var(--primary-border)
+}
+ .notificationsContainer > label i{
+     color: var(--secondary-text-color);
+     margin-left: 1em;
+     margin-top: 1em;
+     scale: 1.5;
+     margin-bottom: 1em;
+
+ }
+ .notificationSection .notifications-list.hidden{
+     display: none;
+ }
+
+ .notificationSection{
+     border-bottom: 1px solid var(--primary-border);
+     color: var(--secondary-text-color);
+     width: 100%;
+     display: flex;
+     flex-direction: column;
+     justify-content: space-evenly;
+ }
+
+.notificationSection > header{
+    display: flex;
+    justify-content: flex-start;
+    gap: 1em;
+    align-items: center;
+    background: var(--sucess-text-color);
+    padding: 0.5em 1em ;
+    cursor: pointer;
+}
+.notificationSection > header > *{
+    font-weight: bold;
+    font-size: 1.3em;
+}
+.notificationSection .notifications-list{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding: 1em;
+}
+.notifications-list .projectNotification header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3em;
+}

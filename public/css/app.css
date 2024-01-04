@@ -1,0 +1,366 @@
+
+@import url('https://fonts.cdnfonts.com/css/tt-norms-pro');
+*{
+    font-family: 'TT Norms Pro', sans-serif;
+    font-weight: 500;
+}
+
+:root {
+    --primary-bg-color: #F5F5F5;  /* Light grayish background */
+    --secondary-bg-color: #333333;  /* Dark bluish background */
+    --onprimary-bg-color: #2E9D7F;  /* Bright blue for text on primary background */
+    --onsecondary-bg-color: #2C3E50;  /* Light grayish text on secondary background */
+    --onthird-bg-color: #E29578;
+    --primary-text-color: #333333;  /* Dark text color */
+    --secondary-text-color: #FFFFFF;  /* White text color */
+    --input-bg-color: #2E9D7F13;
+    --error-text-color: #DE3D44;
+    --sucess-text-color: #2C7E90;
+    --input-secondary-bg-color: #69899613;
+    --on-third-bg-color: #698996;
+    --primary-border: #CCCCCC99;
+    --warning-bg-color: #FFC107;
+    --modal-main-border: #c8c8c8;
+    --modal-secondary-border: #dee2e6;
+    --close-button-primary-color: #7f7f7f;
+    --close-button-hover-color: #404040;
+    --primary-border-color: #3fa86b99;
+    --secondary-border-color: #52739999;
+    --posts-bg-color: #f2f2f2;
+    --modal-header-error: #DE3D44;
+    --modal-header-warning: #FEBF00;
+    --modal-header-info: #04A1B9;
+    --modal-header-success: #1AA346;
+  }
+
+*, h1, h2, h3, h4, h5, h6 {
+    padding: 0;
+    border: 0;
+    margin: 0;
+    font-family: 'TT Norms Pro', sans-serif;
+}
+
+h1 {
+    font-size: 1.4em;
+    font-weight: bolder;
+}
+
+header nav span {
+    font-size: 1.2em;
+
+}
+
+a {
+    cursor: pointer;
+    color: var(--onsecondary-bg-color);
+}
+
+a h1 {
+    color: var(--primary-bg-color);
+}
+
+.icon {
+    max-width: 100%;
+    max-height: 100%;
+    margin: auto;
+    display: block;
+}
+
+.user_icon {
+    width: 2.5em;
+    height: 2.5em;
+    margin-left: auto;
+    margin-right:1em ;
+
+}
+
+body {
+    background-color: var(--primary-bg-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex-grow: 1;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+
+
+
+body > header,  body > footer {
+    color: var(--secondary-text-color);
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color:var(--secondary-bg-color);
+    padding: 0.5em;
+}
+body > footer ul{
+    flex-wrap: wrap;
+}
+
+body > header {
+    position: fixed;
+    top: 0;
+    gap: 0.5em;
+    z-index: 13;
+}
+
+body > footer {
+    position: relative;
+    bottom: 0;
+    align-self: flex-end;
+    gap: 1em;
+}
+
+
+body > header nav ul, body >footer ul, body >footer h6 {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+body > header nav ul {
+    justify-content: flex-start;
+    gap: 1em;
+}
+
+
+body >footer ul, body >footer h6 {
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+}
+
+body > header nav ul *, body >footer ul * {
+    color: inherit;
+    padding: 0.2em;
+    margin: 0;
+    border-radius: 0.5em;
+    min-width: fit-content;
+    position: relative;
+}
+
+
+body > header nav ul *:hover, body >footer ul *:hover {
+    background: var(--onprimary-bg-color);
+    color: inherit;
+}
+body > header nav ul li.selected::after{
+    content: ' ';
+    position: absolute;
+    width: 80%;
+    left: 10%;
+    bottom: -0px;
+    border-bottom: 0.2em solid var(--onprimary-bg-color);
+}
+
+
+#content label {
+    font-weight: normal;
+}
+
+
+
+.error {
+    font-weight: bold;
+    color: var(--error-text-color);
+}
+
+.success {
+    font-weight: bold;
+    color: var(--sucess-text-color);
+}
+
+#content > form input {
+    background-color: white;
+}
+.status{
+    padding: 0.2em 0.5em ;
+    border-radius: 10em;
+    font-size: 1em;
+    color: white;
+}
+
+@media (max-width: 70em) {
+    #cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    main > header h1 {
+        grid-row-end: span 2;
+    }
+}
+
+@media (max-width: 40em) {
+    #cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 25em) {
+    body {
+        margin: 0;
+    }
+
+    main > header {
+        margin: 0;
+        padding: 0.5em;
+    }
+
+    main > header span {
+        margin: 0;
+    }
+
+    #content form {
+        margin: 0;
+        max-width: 25em;
+    }
+
+    article.card {
+        margin: 0;
+        border-bottom: 1px solid rgba(96, 108, 118, 0.4);
+    }
+}
+
+/**
+ * Override milligram colors
+ * Some styles might be missing
+ **/
+button {
+    background-color: var(--onsecondary-bg-color);
+    border-color: var(--onsecondary-bg-color);
+}
+
+a.button {
+    background-color: var(--onsecondary-bg-color);
+    outline: none;
+    border: none;
+    margin: 0;
+}
+
+a.button.button-outline {
+    color: var(--onsecondary-bg-color);
+}
+
+
+
+input[type=text]:focus,
+input[type=email]:focus,
+input[type=password]:focus {
+    border-color: #9b4dca;
+}
+  
+.avatar {
+    width: 100%;
+    height: 100%;
+  border-radius: 100%;
+  object-fit: cover;
+}
+
+#header_title > a {
+    color: inherit
+}
+
+.invisible{
+    background: transparent;
+    border: 0;
+    margin: 0;
+    width: auto;
+    height: 100%;
+    padding: 0;
+    outline: none;
+}
+
+.invisible:hover{
+    background: transparent;
+}
+.hidden{
+    display: none;
+}
+
+.roundButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    width: fit-content;
+    height: fit-content;
+    aspect-ratio: 1 / 1;
+    padding: 0.5em;
+
+}
+
+
+.search form, .search {
+    width: 100%;
+    display: flex;
+    gap: 1em;
+    flex-wrap: wrap;
+
+}
+
+
+.search  input{
+    max-width: 30em;
+    background: var(--primary-bg-color);
+}
+header .search button{
+
+    background: var(--onprimary-bg-color);
+    cursor: pointer;
+    margin: 0;
+}
+.search > button  i{
+    margin-right: 0.3em ;
+    scale: 1.5;
+}
+
+.button {
+    outline: none;
+    border: none;
+}
+
+.filters{
+    width: fit-content;
+    background: var(--onprimary-bg-color);
+    height: fit-content;
+    border: 0;
+}
+
+.filters select{
+    margin: 0;
+    color: var(--secondary-text-color);
+    outline: none;
+    border: 0;
+}
+
+.actions .remove, .actions .delete {
+    background: var(--error-text-color);
+}
+
+.actions .block {
+    background: var(--warning-bg-color);
+}
+
+.actions .promote {
+    background: var(--onprimary-bg-color);
+}
+
+.actions .edit {
+    background: var(--onsecondary-bg-color);
+}
+
+.actions > *:hover {
+    background: var(--on-third-bg-color);
+}
+

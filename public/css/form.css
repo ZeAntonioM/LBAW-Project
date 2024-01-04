@@ -1,0 +1,106 @@
+.formContainer{
+    padding-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    gap: 3em;
+    width: 100%;
+}
+
+.formContainer header{
+    text-align: center;
+    margin-bottom: 2em;
+}
+.formContainer header h2{
+    font-size: 3em;
+}
+
+.formContainer form{
+    display: flex;
+    justify-content: center;
+    gap: 3em;
+    width: 100%;
+    max-width: 60em;
+    margin: auto;
+    flex-wrap: wrap;
+}
+.formContainer form .primaryContainer{
+    display: flex;
+    justify-content: space-evenly;
+    gap: 1em;
+    flex-direction: column;
+    flex-grow: 1;
+}
+.formContainer form .sideContainer{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1em;
+    flex-direction: column;
+    flex-basis: 20em;
+}
+.formContainer form .sideContainer >*{
+    width: 100%;
+    max-width: 30em;
+}
+.formContainer form .sideContainer input{
+    background: var(--onsecondary-bg-color);
+    color: var(--secondary-text-color);
+}
+
+.formContainer form .sideContainer input,.taskCreation .formContainer form .sideContainer select{
+    background: var(--onsecondary-bg-color);
+    color: var(--secondary-text-color);
+    border-radius: 13em;
+    border: none;
+    outline: none;
+    max-width: 30em;
+}
+
+
+.formContainer form input,.formContainer form textarea{
+    outline: none;
+    border: none;
+    padding: 1.5em;
+    font-size: 1em;
+
+}
+
+.formContainer form input[type='date']{
+    text-align: center;
+    padding: 0 1.5em ;
+    margin: 0;
+}
+.formContainer form input{
+    border-radius: 13em;
+}
+.formContainer  .buttons{
+    display: flex;
+    gap: 2em;
+    align-content: center;
+}
+.formContainer form .buttons *{
+    margin: auto 0;
+    text-align: center;
+}
+
+.formContainer form textarea{
+    min-height: 15em;
+}
+
+@media (max-width: 60em) {
+
+    .taskCreation .formContainer{
+        padding:  3em 0;
+    }
+    .taskCreation .formContainer form{
+        flex-direction: column;
+
+
+    }
+    .taskCreation .formContainer form .sideContainer input,.taskCreation .formContainer form .sideContainer select{
+        margin: auto;
+    }
+
+}

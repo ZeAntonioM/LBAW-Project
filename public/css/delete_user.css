@@ -1,0 +1,66 @@
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container>*{
+    color:#14354C;
+}
+
+
+.container-fluid .card{
+    background-color: white;
+    box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+.container-fluid button{
+    border:none;
+    background-color: var(--error-text-color);
+}
+.container-fluid h1{
+    font-size: 2.5em;
+    font-weight: 500;
+}
+.form-control{
+    min-height: 40vh;
+    font-size: 5em;
+}
+.container-fluid h2{
+    font-size: 1.2em;
+}
+.bi-lock-fill{
+    color: black;
+    font-size: 3em;
+}
+.container-fluid button{
+    text-transform: none;
+    color:white;
+    font-size: 1em;
+}
+.container-fluid input{
+    font-size: 1.2em;
+}
+.container-fluid input:focus{
+    border:var(--error-text-color) 2px solid;
+}
+.goback>a{
+    color:var(--error-text-color);
+    font-size: 1.2em;
+}
+.goback>a:hover{
+    color:var(--error-text-color);
+    opacity: 0.5;
+}
+@media (min-width: 992px) {
+    .container-fluid>.row {
+      width: 33vw;
+      min-width: 33vw;
+    }
+  }
+
+  @media (max-width: 991px) {
+    .container-fluid>.row {
+      width: 90vw;
+      min-width: 90vw;
+    }
+}

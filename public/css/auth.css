@@ -1,0 +1,171 @@
+:root{
+    --register-color: var(--on-third-bg-color);
+    --register-secondary-color: #BFDFFB;
+    --login-color: var(--onprimary-bg-color);
+    --login-secondary-color: #CCFFCC ;
+    --register-input-color: var(--input-secondary-bg-color);
+}
+.authentication{
+    width: 100%;
+
+    display: flex;
+    margin:auto;
+    flex-wrap: wrap;
+    min-height: 100vh;
+
+}
+.login .shine{
+    color:var(--onprimary-bg-color);
+}
+.register .shine{
+    color:#698996;
+}
+.forgot>a{
+    color:#698996; 
+}
+.forgot>a:hover{
+    color:#698996c0;
+}
+/*#CCFFCC*/
+/*#00D9D5*/
+.authentication .container{
+
+    width: 30em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.2em;
+
+    box-shadow: 0 0.5em 0.5em #00000020,0 1em 1em #00000015,0 1.5em 1.5em #00000010,0 2em 2em #00000005;
+}
+
+.login .container{
+    background: linear-gradient( var(--login-color), var(--login-secondary-color));
+}
+.register .container{
+    background: linear-gradient( var(--register-color), var(--register-secondary-color));
+}
+.authentication .formContainer{
+    background: var(--primary-bg-color);
+    flex-grow: 1;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1em;
+    box-shadow: 0 0.5em 0.5em #00000020,0 1em 1em #00000015,0 1.5em 1.5em #00000010,0 2em 2em #00000005;
+
+}
+.authentication .formContainer > *{
+    width: 40em;
+    margin: 0 auto;
+}
+.authentication .formContainer h2{
+    text-align: center;
+    margin-top: 1em;
+}
+
+.authentication .formContainer form {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    padding: 2em;
+}
+.authentication .formContainer form *{
+    margin: auto;
+}
+.authentication .formContainer form input, .formContainer form select{
+
+    outline: none;
+    border: none;
+    border-radius: 13em;
+    padding: 1.5em;
+    font-size: 1em;
+    max-width: 30em;
+}
+.formContainer form select{
+    padding: 0 1.5em ;
+}
+.login .formContainer form input{
+    background-color: var(--input-bg-color);
+}
+.register .formContainer form input, .register .formContainer form select{
+    background-color: var(--register-input-color);
+}
+
+.authentication .formContainer form button[type='submit'], .authentication .container a{
+
+    padding: 0.5em;
+    width: 15em;
+    border-radius: 10em;
+    height: fit-content;
+    margin: 0 auto;
+    border: none;
+}
+.login .formContainer form button[type='submit'], .login .container a{
+    background: var(--login-color);
+}
+
+.register .formContainer form button[type='submit'], .register .container a{
+    background: var(--register-color);
+}
+
+.authentication .formContainer form button[type='submit']:hover{
+ background: var(--onsecondary-bg-color);
+}
+
+select.is_admin{
+    padding: 0;
+}
+
+.authentication .container h2, .authentication .container p{
+    text-align: center;
+    font-weight: bold;
+    color: var(--secondary-text-color);
+}
+
+.authentication .container p{
+    font-size: 1.2em;
+    font-weight: normal;
+    padding: 0 1.3em;
+}
+
+.authentication .container a{
+    background: var(--primary-bg-color);
+    color: var(--primary-text-color);
+}
+.authentication .container a:hover{
+    background: var(--onsecondary-bg-color);
+    color: var(--secondary-text-color);
+}
+
+
+@media (max-width: 70em) {
+    .authentication .container, .authentication .formContainer{
+        flex-basis: 100%;
+
+    }
+    .authentication .container{
+        padding: 1em;
+    }
+
+}
+@media (max-width: 40em) {
+    #content{
+        padding: 0em 0;
+    }
+    .authentication .formContainer,.authentication .container{
+        padding: 1em;
+        box-shadow: none;
+    }
+    .authentication .formContainer form {
+        padding: 0;
+    }
+    .authentication .formContainer > *{
+        width: 100%;
+        margin: 0 auto;
+    }
+
+
+
+}

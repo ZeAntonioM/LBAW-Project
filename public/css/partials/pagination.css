@@ -1,0 +1,68 @@
+.pagination{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    max-width: 80em;
+    margin: 2em auto 2em;
+}
+.pagination .pages{
+
+    display: flex;
+    flex-wrap: nowrap;
+
+    gap: 1em;
+}
+.pagination a {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 1em;
+
+}
+.pagination .page{
+    color: white;
+    background: var(--onsecondary-bg-color);
+    padding: 0 1em;
+    height: 2em;
+    width: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.3em;
+}
+.pagination .page.current{
+    background: var(--onprimary-bg-color);
+}
+
+.pagination .first{
+    display: none;
+}
+
+
+@media (max-width: 40em) {
+    .pagination .priority3, .pagination .priority2{
+        display: none;
+    }
+    .pagination .first{
+        display: inherit;
+    }
+}
+@media (max-width: 35em) {
+    .pagination .priority1{
+        display: none;
+    }
+
+}
+@media (max-width: 25em) {
+    .pagination .current {
+        display: none;
+    }
+    .pagination .last {
+        display: none;
+    }
+    .pagination .first {
+        display: none;
+    }
+}

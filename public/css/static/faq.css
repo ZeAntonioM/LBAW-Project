@@ -1,0 +1,111 @@
+
+@import url('https://fonts.cdnfonts.com/css/tt-norms-pro');
+
+.showinfo{
+
+  text-align: center;
+  font-size: 1em;
+  font-weight: 500;
+  border: none !important;
+}
+.showinfo:hover{
+  color:var(--sucess-text-color) !important;
+  text-decoration: underline;
+  border: none !important;
+}
+.showinfo:focus{
+  color:black;
+  background-color: transparent !important;
+  border: none !important;
+}
+.options{
+  height: fit-content;
+}
+.header-options{
+  width: 100%;
+  color:var(--primary-text-color);
+}
+.header-options h2{
+  font-size: 1.5em;
+  font-weight: 600;
+}
+.header-options button{
+  color:var(--primary-text-color);
+  text-transform: none;
+  text-decoration: none;
+  border:none;
+  border-bottom: black solid 2px;
+  border-radius: 0;
+  margin:0;
+  font-size: 1.3em;
+}
+
+
+.header-options button:active,
+.header-options button:hover {
+  color:var(--sucess-text-color) !important;
+  text-decoration: underline;
+  border-bottom: black solid 2px;
+}
+.header-options button:focus{
+    background-color: transparent !important;
+}
+main {
+  justify-content: flex-start;
+
+}
+
+#content{
+  overflow-x: hidden;
+  padding-top:2%;
+  padding-bottom:2%;
+}
+header > h1 {
+  color: var(--primary-text-color);
+  font-size: 2.5em;
+}
+.option{
+  font-size: 2em;
+  color:var(--primary-text-color);
+  font-weight: 600;
+}
+.row{
+  padding: 2%;
+}
+.accordion-body{
+  color: var(--primary-text-color);
+  font-size: 1.4em;
+}
+.accordion-item{
+  color:var(--primary-text-color);
+  background-color: var(--primary-bg-color) !important;
+  border:none;
+  border-bottom: 2px solid var(--onsecondary-bg-color) !important;
+}
+.accordion .accordion-header > p{
+  font-weight: 500;
+  color:var(--primary-text-color);
+  background-color: var(--primary-bg-color) !important;
+  font-size: 0.7em;
+  box-shadow: none !important;
+  text-transform: none;
+  margin: 0;
+}
+ .accordion .accordion-button:focus {
+  color: var(--primary-text-color);
+  outline: none;
+  box-shadow: none !important;
+}
+  
+.footer-content{
+  font-size: 1.3em;
+}
+.footer-content > span > a{
+  color: var(--sucess-text-color);
+  text-decoration: underline;
+}
+
+
+
+
+

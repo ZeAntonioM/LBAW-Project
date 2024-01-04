@@ -1,0 +1,60 @@
+.tasks-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-content: flex-start;
+    min-height: 80vh;
+    gap: 1em;
+}
+
+
+.tasks-list > header > * {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    gap: 1em;
+    flex-wrap: wrap;
+}
+
+.tasks-list > header > * > a {
+    margin-left: auto;
+    background: var(--sucess-text-color);
+}
+
+.tasks-content .search > input {
+    max-width: 50em;
+    border: none;
+    background: var(--primary-bg-color);
+}
+
+.tasks-content > * {
+    margin: 0 auto;
+}
+
+.tasks-list {
+    width: 100%;
+    min-height: 56vh;
+}
+
+.tasks-list > .tasks > .taskCard {
+    padding: 0.5em 1.5em;
+    background: var(--primary-bg-color);
+}
+
+.tasks-list > .tasks {
+    max-height: 60vh;
+    padding-top: 1em;
+    overflow-y: scroll;
+}
+
+.tasks-list > header {
+    width: 100%;
+    display: flex;
+    background: var(--onsecondary-bg-color);
+    gap: 1em;
+    flex-wrap: wrap;
+    padding: 3em 1em 1em;
+}
+
+

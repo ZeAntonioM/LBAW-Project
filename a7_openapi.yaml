@@ -1,0 +1,912 @@
+openapi: 3.0.0
+info:
+  version: '1.0'
+  title: Project Planner Web API
+  description: 'Web Resources Specification (A7) for Project Planner'
+externalDocs:
+  description: 'Find out more about Project Planner'
+  url: https://git.fe.up.pt/lbaw/lbaw2324/lbaw2353
+servers:
+  - url: http://lbaw.fe.up.pt
+    description: "Find more info here"
+tags:
+  - name: 'M01: Authentication and Individual Profile'
+  - name: 'M02: Projects'
+  - name: 'M03: Tags'
+  - name: 'M04: Tasks'
+  - name: 'M05: Comments'
+  - name: 'M06: Posts'
+  - name: 'M07: Notifications'
+  - name: 'M08: Common Pages'
+  - name: 'M09: Administration'
+  - name: 'M10: API'
+paths:
+  # AUTHENTICATION AND INDIVIDUAL PROFILE
+  /login:
+    get: 
+      operationId: R101
+      summary: 'R101: Login Form'
+      description: 'Provide login form. Access: PUB'
+      tags:
+        - 'M01: Authentication and Individual Profile'
+      responses:
+        '200':
+          description: 'Show Login page.'
+  
+    post:
+      operationId: R102
+      summary: 'R102: Login Action'
+      description: 'Processes the login form submission. Access: PUB'
+      tags:
+        - 'M01: Authentication and Individual Profile'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                email:   
+                  type: string
+                  format: email
+                password:    
+                  type: string
+              required:
+                   - email
+                   - password
+      responses:
+       '302':
+           description: 'Redirect after processing the login credentials.'
+           headers:
+             Location:
+               schema:
+                 type: string
+               examples:
+                 302Success:
+                   description: 'Successful authentication. Redirect to  homepage.'
+                   value: '/homepage/{userId}'
+                 302Error:
+                   description: 'Error in authentication. Redirect to login page.'
+                   value: '/login'
+  /logout:
+    post:
+      operationId: R103
+      summary: 'R103: User Logout'
+      description: 'Logout the current authenticated user. Access: USR'
+      tags:
+        - 'M01: Authentication and Individual Profile'
+      responses:
+        '302':
+          description: 'Redirect after processing Logout'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                  302Success: 
+                    description: ' Successful Logout Redirect to login Page'
+                    value: '/login'
+                  302Error:
+                    description: ' Error in Logout Action. Redirect to home page'
+                    value: '/homepage/{userId}'
+  /register:
+    get:
+      operationId: R104
+      summary: 'R104: Go to user sign-up UI'
+      description: 'Provide sign-up user form. Access: USR'
+      tags:
+        - 'M01: Authentication and Individual Profile'
+      responses:
+        '200':
+          description: 'Successful redirection to register form'
+        '404':
+          description: 'Sign-up not found.'
+    
+    post:
+      operationId: R105
+      summary: 'R105: Create account for user'
+      description: 'Create account for user'
+      tags:
+        - 'M01: Authentication and Individual Profile'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                name: 
+                  type: string
+                email:   
+                  type: string
+                  format: email
+                password:    
+                  type: string
+              required:
+                - email
+                - password
+      
+      responses:
+        '302':
+          description: 'Processing credentials to create account'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Account created for user'
+                  value: '/login'
+                302Error:
+                  description: 'Failed to create account'
+                  value: '/register'
+  
+  /user-profile/{userId}:
+    get:
+      operationId: R106
+      summary: 'R106: Go to user profile '
+      description: 'Provide user profile page. Access: USR, ADM'
+      tags:
+        - 'M01: Authentication and Individual Profile'
+      parameters:
+       - in: path
+         name: userId
+         schema:
+           type: integer
+         required: true
+      responses:
+        '200':
+          description: 'Show user profile page' 
+        '404':
+          description: 'User profile page not found'
+  
+  /user-profile/{userId}/edit:
+    get:
+      operationId: R107
+      summary: 'R107: Go to edit user profile '
+      description: 'Provide edit user profile page. Access: USR'
+      tags:
+        - 'M01: Authentication and Individual Profile'
+      
+      parameters:
+        - in: path
+          name: userId
+          schema:
+            type: string
+          required: true
+          description: the user id
+      
+      responses:
+        '200':
+          description: 'Successful redirection to user edit profile page'
+        '404':
+          description: 'User profile page not found.'
+    
+    put:
+      operationId: R108
+      summary: 'R108: Confirm edited user profile'
+      description: 'Edit user profile confirmation Access: USR'
+      tags:
+        - 'M01: Authentication and Individual Profile'
+      
+      parameters:
+        - in: path
+          name: userId
+          schema:
+            type: string
+          required: true
+          description: the user id
+      
+      requestBody:
+        description: 'Data for editing user profile'
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                avatar: 
+                  type: string
+                name:
+                  type: string
+                password: 
+                  type: string
+      responses:
+        '302':
+          description: 'Redirect after processing edit profile'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                  302Success: 
+                    description: ' Successful edit user profile page.'
+                    value: '/user-profile/{userId}'
+                  302Error:
+                    description: ' Error editing user profile.'
+                    value: '/user-profile/{userId}'
+  
+  /homepage/{userId}:
+    get:
+      operationId: R109
+      summary: 'R109: Show user homepage'
+      description: 'Shows the homepage of a user with the projects he is in. Access: USR'
+      tags:
+        - 'M01: Authentication and Individual Profile'
+      
+      parameters:
+        - in: path
+          name: userId
+          schema:
+            type: string
+          required: true
+          description: the user id
+      
+      responses:
+        '200':
+          description: 'Successful redirection to user edit profile page'
+        '404':
+          description: 'User profile page not found.'
+  
+  ### PROJECTS ###
+  /project/{projectId}:
+  get:
+    operationId: R201
+    summary: 'R201: Project page.'
+    description: 'Provide the page of a project. Access: PJM, ADM'
+    tags:
+      - 'M02: Projects'
+    
+    parameters:
+      - in: path
+        name: projectId
+        schema:
+          type: string
+        required: true
+        description: the project id
+    
+    responses:
+      '200':
+        description: 'Show project UI'
+
+  delete:
+    operationId: R205
+    summary: 'R205: Delete Project Action'
+    description: 'Deletes a project. Access: PJM'
+    tags:
+      - 'M02: Projects'
+    
+    parameters:
+      - in: path
+        name: projectId
+        schema:
+          type: string
+        required: true
+        description: the project id
+    
+    responses:
+      '200':
+        description: 'Project deleted successfully'
+
+  /project/new:
+    get:
+      operationId: R202
+      summary: 'R202: Create project form.'
+      description: 'Provide create new project page. Access: USR'
+      tags:
+        - 'M02: Projects'
+      responses:
+        '200':
+          description: 'Show create project UI'
+    
+    post:
+      operationId: R203
+      summary: 'R203: Create project action'
+      description: 'Processes the create a project form submission. Access: USR'
+      tags:
+        - 'M02: Projects'
+      
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                description:
+                  type: string
+                deadline:
+                  type: string
+                  format: date
+                image:
+                  type: string
+                  format: binary
+              required:
+                - title
+                - description
+
+      responses:
+        '302':
+          description: 'Redirect after processing the information to create a project'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful creation of a new project. Redirect to project page'
+                  value: 'project/{projectId}'
+                302Error:
+                  description: 'Title, description, or deadline value missing'
+                  value: 'project/new'
+  
+  /project/{projectId}/members/add:
+    post:
+      operationId: R204
+      summary: 'R204: Add user to project action'
+      description: 'Add a user to a project. Access: PJC'
+      tags:
+        - 'M02: Projects'
+      
+      parameters:
+        - in: path
+          name: projectId
+          schema:
+            type: string
+          required: true
+          description: the project id
+      
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                projectId:
+                  type: string
+                userEmail:
+                  type: string
+                  format: email
+              required:
+                - projectId
+                - userEmail
+      
+      responses:
+        '200':
+          description: 'Added user to project'
+        '403':
+          description: 'You have to be the project coordinator to add a user to the project'
+        '404':
+          description: 'User with the specified email does not exists'
+        '409':
+          description: 'User with the specified email is already in the project'
+          
+  /project/{projectId}/edit:
+    get:
+      operationId: R206
+      summary: 'R404: Show edit project form'
+      description: 'Shows the form to edit a specific project. Access: PJM'
+      tags:
+        - 'M02: Projects'
+      
+      parameters:
+        - in: path
+          name: projectId
+          schema:
+            type: string
+          required: true
+          description: the project id
+      
+      responses:
+        '200':
+          description: 'Show edit project form UI'
+    put:
+      operationId: R207
+      summary: 'R205: Edit project action'
+      description: 'Processes the edit a project form. Access: PJM'
+      tags:
+        - 'M02: Projects'
+      
+      parameters:
+        - in: path
+          name: projectId
+          schema:
+            type: string
+          required: true
+          description: the project id
+      
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                description:
+                  type: string
+              required:
+                - title
+                - description
+      
+      responses:
+        '302':
+          description: 'Redirect after processing the information to edit a project'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful edit of project. Redirect to edited project page'
+                  value: 'project/{projectId}/edit'
+                302Error:
+                  description: 'There was an error editing project' 
+                  value: '/project/{projectId}/edit'
+
+  ### TASKS ###
+  /project/{projectId}/task/new:
+    get:
+      operationId: R401
+      summary: 'R401: Create task form'
+      description: 'Provide create new task form in a certain project. Access: PJM'
+      tags:
+        - 'M04: Tasks'
+      
+      parameters:
+        - in: path
+          name: projectId
+          schema:
+            type: string
+          required: true
+          description: the project id
+      
+      responses:
+        '200':
+          description: 'Show create project UI'
+
+    post:
+      operationId: R402
+      summary: 'R402: Create task action'
+      description: 'Processes the create a task form. Access: PJM'
+      tags:
+        - 'M04: Tasks'
+      
+      parameters:
+        - in: path
+          name: projectId
+          schema:
+            type: string
+          required: true
+          description: the project id
+      
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                description:
+                  type: string
+                deadline:
+                  type: string
+                  format: date
+                opened_user_id:
+                  type: string
+              required:
+                - title
+                - description
+                - opened_user_id
+      
+      responses:
+        '302':
+          description: 'Redirect after processing the information to create a task'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful creation of a new task. Redirect to created task page'
+                  value: 'project/{projectId}/task/{taskId}'
+                302Error:
+                  description: 'Title, description, or deadline value missing'
+                  value: 'project/{projectId}/task/new' 
+  
+  /project/{projectId}/task/{taskId}:
+    get:
+      operationId: R403
+      summary: 'R403: Show task details'
+      description: 'Shows the details of a task in the task page. Access: PJM'
+      tags:
+        - 'M04: Tasks'
+      
+      parameters:
+        - in: path
+          name: projectId
+          schema:
+            type: string
+          required: true
+          description: the project id
+  
+        - in: path
+          name: taskId
+          schema:
+            type: string
+          required: true
+          description: the task id
+      
+      responses:
+        '200':
+          description: 'Show task details UI'
+  
+  /project/{projectId}/task/{taskId}/edit:
+    get:
+      operationId: R404
+      summary: 'R404: Show edit task form'
+      description: 'Shows the form to edit a specific task. Access: PJM'
+      tags:
+        - 'M04: Tasks'
+      
+      parameters:
+        - in: path
+          name: projectId
+          schema:
+            type: string
+          required: true
+          description: the project id
+  
+        - in: path
+          name: taskId
+          schema:
+            type: string
+          required: true
+          description: the task id
+      
+      responses:
+        '200':
+          description: 'Show edit task form UI'
+    
+    put:
+      operationId: R405
+      summary: 'R405: Edit task action'
+      description: 'Processes the edit a task form. Access: PJM'
+      tags:
+        - 'M04: Tasks'
+      
+      parameters:
+        - in: path
+          name: projectId
+          schema:
+            type: string
+          required: true
+          description: the project id
+        
+        - in: path
+          name: taskId
+          schema:
+            type: string
+          required: true
+          description: the task id
+      
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                description:
+                  type: string
+                deadline:
+                  type: string
+                  format: date
+      
+      responses:
+        '302':
+          description: 'Redirect after processing the information to create a task'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful edit of task. Redirect to edited task page'
+                  value: 'project/{projectId}/task/{taskId}'
+                302Error:
+                  description: 'There was an error editing task' 
+                  value: '/project/{projectId}/task/{taskId}/edit' 
+      
+  /project/{projectId}/task/{taskId}/close: 
+    put:
+      operationId: R406
+      summary: 'R406: Mark task as closed action'
+      description: 'Marks a task as closed. Access: ASG, PJC' 
+      tags:
+        - 'M04: Tasks'
+      
+      parameters:
+        - in: path
+          name: projectId
+          schema:
+            type: string
+          required: true
+          description: the project id
+        
+        - in: path
+          name: taskId
+          schema:
+            type: string
+          required: true
+          description: the task id
+      
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                closed_user_id:
+                  type: string
+      
+      responses:
+        '200':
+          description: 'Task marked as completed'
+        '403':
+          description: 'User that closed task is not assigned to task or is not project coordinator'
+        '404':
+          description: 'User that closed the task does not exits'
+        
+  
+  ### Common Pages ###
+  /landing:
+    get:
+      operationId: R801
+      summary: 'R801: Landing page'
+      description: 'Provide landing page. Access: PUB'
+      tags:  
+        - 'M08: Common Pages'
+      responses:
+        '200':
+          description: 'Show Landing Page'
+        '404':
+          description: 'Landing page not found'
+  /faq:
+    get:
+      operationId: R802
+      summary: 'R802: Faq page'
+      description: 'Provide Faq page. Access: PUB'
+      tags:  
+        - 'M08: Common Pages'
+      responses:
+        '200':
+          description: 'Show Faq page'
+        '404':
+          description: 'Faq page not found'
+  /about-us:
+    get:
+      operationId: R803
+      summary: 'R803: About Us page'
+      description: 'Provide About Us page. Access: PUB'
+      tags:  
+        - 'M08: Common Pages'
+      responses:
+        '200':
+          description: 'Show About Us page'
+        '404':
+          description: 'About Us page not found'
+  /contacts:
+    get:
+      operationId: R804
+      summary: 'R804: Contacts page'
+      description: 'Provide Contacts page. Access: PUB'
+      tags:  
+        - 'M08: Common Pages'
+      responses:
+        '200':
+          description: 'Show Contacts page'
+        '404':
+          description: 'Contacts page not found'
+  
+  ### ADMIN ###
+  /admin/user/new:
+    get:
+      operationId: R901
+      summary: 'R901: Show create user form.'
+      description: 'Show the form to create a user as an admin. Access: ADM'
+      tags:
+        - 'M09: Administration'
+      responses:
+        '200':
+          description: 'Show create user as admin UI'
+    
+    post:
+      operationId: R902
+      summary: 'R902: Create user action'
+      description: 'Processes the create a user form submission. Access: ADM'
+      tags:
+        - 'M09: Administration'
+      
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+                createAdmin:
+                  type: boolean
+              required:
+                - name
+                - email
+                - password
+                - createAdmin
+
+      responses:
+        '302':
+          description: 'Redirect after processing the information to create a user'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful creation of a new user. Redirect to created user page'
+                  value: 'user-profile/{userId}'
+                302Error:
+                  description: 'Name, email, password or createAdmin value missing'
+                  value: 'admin/user/new'  
+  
+  ### API ###
+  /api/tasks:
+    get:
+      operationId: R1001
+      summary: 'R1001: Search tasks API'
+      description: 'Searches for tasks in a specific project and returns results as JSON. Access: PJM'
+      
+      tags:
+        - 'M10: API'
+      
+      parameters:
+        - in: query
+          name: query
+          description: 'String to use for full-text search'
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: project
+          description: 'Project the task is in'
+          schema:
+            type: integer
+          required: true
+        - in: query
+          name: status
+          description: 'Status of the task. Whether it is opened, closed or canceled'
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: deadline
+          description: 'Deadline of the task'
+          schema:
+            type: string
+            format: date
+          required: false
+        - in: query
+          name: opened_user_id
+          description: 'Id of the user that opened the task'
+          schema:
+            type: string
+          required: false
+      
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    title:
+                      type: string
+                    description:
+                      type: string
+                    status:
+                      type: string
+                    starttime:
+                      type: string
+                      format: date
+                    deadline:
+                      type: string
+                      format: date
+                    opened_user_id:
+                      type: string
+                      
+                example:
+                  - id: '1'
+                    title: 'Implement home page'
+                    description: 'Fully implement the website homepage with a header and footer'
+                    status: 'Open'
+                    starttime: '2023-10-10'
+                    deadline: '2023-12-01'
+                    opened_user_id: '1'
+                    
+                  - id: '2'
+                    title: 'Develop marketing Instagram Post'
+                    description: 'Create a Instagram post to advertise our app'
+                    status: 'Open'
+                    starttime: '2023-11-01'
+                    deadline: '2024-01-12'
+                    opened_user_id: '6'
+
+  /api/users:
+    get:
+      operationId: R1002
+      summary: 'R1002: Search users API'
+      description: 'Searches for users in the system and returns results as JSON. Access: ADM'
+      
+      tags:
+        - 'M10: API'
+      
+      parameters:
+        - in: query
+          name: query
+          description: 'String to use for full-text search'
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: isAdmin
+          description: 'Flag that determines if user is an administrator'
+          schema:
+            type: integer
+          required: false
+      
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties: 
+                    name:
+                      type: string
+                    email:
+                      type: string
+                    isAdmin:
+                      type: boolean
+                      
+                example:
+                  - name: 'John Doe'
+                    email: 'johndoe@gmail.com'
+                    isAdmin: False
+                    
+                  - name: 'Jane Tho'
+                    email: 'janetho@gmail.com'
+                    isAdmin: True
+    

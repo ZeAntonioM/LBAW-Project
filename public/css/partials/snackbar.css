@@ -1,0 +1,70 @@
+#snackbar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-items: start;
+    position: fixed;
+    visibility: hidden;
+    padding: 1em;
+    z-index: 1;
+    max-width: 50em;
+    border-radius: 1em;
+    color: white;
+    column-gap: 1em;
+    right: 1em; 
+    bottom: 2em; 
+}
+
+#snackbar.showSnackbar { 
+    visibility: visible; 
+    animation: fadein 0.5s, fadeout 0.5s 4.5s;
+}
+
+#snackbar p {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+#snackbar i {
+    font-size: 1.3em;
+}
+
+.snackbar-error {
+    background-color: var(--modal-header-error);
+}
+
+.snackbar-warning {
+    background-color: var(--modal-header-warning);
+}
+
+.snackbar-info {
+    background-color: var(--modal-header-info);
+}
+
+.snackbar-success {
+    background-color: var(--modal-header-success);
+}
+
+@keyframes fadein { 
+    from { 
+        bottom: 0; 
+        opacity: 0; 
+    } 
+    to { 
+        bottom: 30px; 
+        opacity: 1; 
+    } 
+} 
+  
+/* when the Snackbar Disappears 
+   from the Screen */
+@keyframes fadeout { 
+    from { 
+        bottom: 30px; 
+        opacity: 1; 
+    } 
+    to { 
+        bottom: 0; 
+        opacity: 0; 
+    } 
+}
